@@ -1,0 +1,14 @@
+{
+  "name": "typescript-maps",
+  "version": "1.0.0",
+  "author": "rahul",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "typescript": "^4.4.2"
+  },
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  }
+}
