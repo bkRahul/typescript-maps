@@ -1,18 +1,28 @@
 import fakerStatic from 'faker';
+import { Mappable } from '../CustomMap';
 
-export class Company {
+export class Company implements Mappable {
   companyName: string;
   catchPhrase: string;
   location: {
     lat: number;
     lng: number;
   };
+
   constructor() {
-    this.companyName = fakerStatic.company.companyName();
-    this.catchPhrase = fakerStatic.company.catchPhrase();
+    const { company, address } = fakerStatic;
+
+    this.companyName = company.companyName();
+    this.catchPhrase = company.catchPhrase();
     this.location = {
-      lat: parseFloat(fakerStatic.address.latitude()),
-      lng: parseFloat(fakerStatic.address.longitude()),
+      lat: parseFloat(address.latitude()),
+      lng: parseFloat(address.longitude()),
     };
+  }
+
+  markerContent(): string {
+    const { address } = fakerStatic;
+
+    return `${address.streetName()} ${address.cityName()} ${address.state()} ${address.zipCode()} ${address.country()}`;
   }
 }
